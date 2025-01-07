@@ -34,6 +34,9 @@
             padding: 10px 20px;
             font-size: 16px;
         }
+        .printable {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -102,8 +105,10 @@
     <div class="download-buttons">
         <button onclick="downloadAsWord()">Download as Word</button>
         <button onclick="downloadAsPDF()">Download as PDF</button>
-        <button onclick="window.print()">Print</button>
+        <button onclick="printContent()">Print</button>
     </div>
+
+    <div class="printable" id="printableContent"></div>
 
     <script>
         // Initialize CKEditor for each textarea
@@ -119,7 +124,7 @@
         CKEDITOR.replace('appendices');
 
         function downloadAsWord() {
-            const content = document.documentElement.outerHTML;
+            const content = getContent();
             const blob = new Blob([content], { type: 'application/msword' });
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
@@ -128,7 +133,33 @@
         }
 
         function downloadAsPDF() {
+            const printableContent = document.getElementById('printableContent');
+            printableContent.innerHTML = getContent();
             window.print();
+            printableContent.innerHTML = ''; // Clear after print
+        }
+
+        function printContent() {
+            const printableContent = document.getElementById('printableContent');
+            printableContent.innerHTML = getContent();
+            window.print();
+            printableContent.innerHTML = ''; // Clear after print
+        }
+
+        function getContent() {
+            let content = '';
+            content += `<h1>सेमिनार पेपर</h1>`;
+            content += `<h3>१. शीर्षक पृष्ठ</h3>` + CKEDITOR.instances.title_page.getData();
+            content += `<h3>२. संक्षिप्त सारांश (Abstract)</h3>` + CKEDITOR.instances.abstract.getData();
+            content += `<h3>३. सामग्री तालिका</h3>` + CKEDITOR.instances.table_of_contents.getData();
+            content += `<h3>४. परिचय</h3>` + CKEDITOR.instances.introduction.getData();
+            content += `<h3>५. साहित्य समीक्षा</h3>` + CKEDITOR.instances.literature_review.getData();
+            content += `<h3>६. कार्यप्रणाली</h3>` + CKEDITOR.instances.methodology.getData();
+            content += `<h3>७. विश्लेषण र छलफल</h3>` + CKEDITOR.instances.analysis_discussion.getData();
+            content += `<h3>८. निष्कर्ष</h3>` + CKEDITOR.instances.conclusion.getData();
+            content += `<h3>९. सन्दर्भ</h3>` + CKEDITOR.instances.references.getData();
+            content += `<h3>१०. परिशिष्ट</h3>` + CKEDITOR.instances.appendices.getData();
+            return content;
         }
     </script>
 </body>
