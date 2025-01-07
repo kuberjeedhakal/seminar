@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="ne">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>सेमिनार पेपर ढाँचा</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+        }
+        h1, h2, h3 {
+            color: #2C3E50;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .textbox {
+            width: 100%;
+            height: 100px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        button {
+            margin-right: 10px;
+        }
+    </style>
+    <script>
+        function createNewTextbox(sectionId) {
+            const section = document.getElementById(sectionId);
+            const newTextbox = document.createElement("textarea");
+            newTextbox.className = "textbox";
+            newTextbox.placeholder = "यहाँ टिप्पणी थप्नुहोस्...";
+            section.appendChild(newTextbox);
+        }
+
+        function deleteLastTextbox(sectionId) {
+            const section = document.getElementById(sectionId);
+            const textboxes = section.querySelectorAll(".textbox");
+            if (textboxes.length > 0) {
+                section.removeChild(textboxes[textboxes.length - 1]);
+            } else {
+                alert("कुनै पनि टेक्स्टबक्स छैन।");
+            }
+        }
+
+        function addTable(sectionId) {
+            const section = document.getElementById(sectionId);
+            const table = document.createElement("table");
+            table.border = "1";
+            table.style.marginTop = "10px";
+
+            const headerRow = document.createElement("tr");
+            const headers = ["स्तम्भ १", "स्तम्भ २", "स्तम्भ ३"];
+
+            headers.forEach(headerText => {
+                const th = document.createElement("th");
+                th.textContent = headerText;
+                headerRow.appendChild(th);
+            });
+
+            table.appendChild(headerRow);
+            section.appendChild(table);
+        }
+    </script>
+</head>
+<body>
+    <h1>सेमिनार पेपरको ढाँचा</h1>
+
+    <div class="section" id="section1">
+        <h2>१. शीर्षक पृष्ठ</h2>
+        <p>पेपरको शीर्षक, सेमिनारको विषय, लेखकको नाम, संस्था/कलेजको नाम, मिति।</p>
+        <button onclick="createNewTextbox('section1')">नयाँ टिप्पणी थप्नुहोस्</button>
+        <button onclick="deleteLastTextbox('section1')">अन्तिम टिप्पणी हटाउनुहोस्</button>
+    </div>
+
+    <div class="section" id="section2">
+        <h2>२. संक्षिप्त सारांश</h2>
+        <p>पेपरको संक्षिप्त परिचय, अनुसन्धान प्रश्न, विधि, र महत्त्वपूर्ण निष्कर्षहरू।</p>
+        <button onclick="createNewTextbox('section2')">नयाँ टिप्पणी थप्नुहोस्</button>
+        <button onclick="deleteLastTextbox('section2')">अन्तिम टिप्पणी हटाउनुहोस्</button>
+    </div>
+
+    <div class="section" id="section3">
+        <h2>३. सामग्री तालिका</h2>
+        <p>खण्ड र उप-खण्डका शीर्षकहरू र पृष्ठ संख्या।</p>
+        <button onclick="createNewTextbox('section3')">नयाँ टिप्पणी थप्नुहोस्</button>
+        <button onclick="deleteLastTextbox('section3')">अन्तिम टिप्पणी हटाउनुहोस्</button>
+    </div>
+
+    <div class="section" id="section4">
+        <h2>४. परिचय</h2>
+        <p>विषयको पृष्ठभूमि, अनुसन्धान प्रश्न, महत्त्व, र संरचना।</p>
+        <button onclick="createNewTextbox('section4')">नयाँ टिप्पणी थप्नुहोस्</button>
+        <button onclick="deleteLastTextbox('section4')">अन्तिम टिप्पणी हटाउनुहोस्</button>
+        <button onclick="addTable('section4')">तालिका थप्नुहोस्</button>
+    </div>
+
+    <div class="section" id="section5">
+        <h2>५. साहित्य समीक्षा</h2>
+        <p>मुख्य अध्ययनहरूको सारांश, अन्तराल, र बहु दृष्टिकोण।</p>
+        <button onclick="createNewTextbox('section5')">नयाँ टिप्पणी थप्नुहोस्</button>
+        <button onclick="deleteLastTextbox('section5')">अन्तिम टिप्पणी हटाउनुहोस्</button>
+        <button onclick="addTable('section5')">तालिका थप्नुहोस्</button>
+    </div>
+
+    <div class="section" id="section6">
+        <h2>६. कार्यप्रणाली</h2>
+        <p>विधिको विस्तृत विवरण, सीमाहरू, र समाधानहरू।</p>
+        <button onclick="createNewTextbox('section6')">नयाँ टिप्पणी थप्नुहोस्</button>
+        <button onclick="deleteLastTextbox('section6')">अन्तिम टिप्पणी हटाउनुहोस्</button>
+        <button onclick="addTable('section6')">तालिका थप्नुहोस्</button>
+    </div>
+
+    <div class="section" id="section7">
+        <h2>७. विश्लेषण र छलफल</h2>
+        <p>पाएको निष्कर्ष, बहुआयामिक विश्लेषण, प्रमाणहरू।</p>
+        <button onclick="createNewTextbox('section7')">नयाँ टिप्पणी थप्नुहोस्</button>
+        <button onclick="deleteLastTextbox('section7')">अन्तिम टिप्पणी हटाउनुहोस्</button>
+        <button onclick="addTable('section7')">तालिका थप्नुहोस्</button>
+    </div>
+
+    <div class="section" id="section8">
+        <h2>८. निष्कर्ष</h2>
+        <p>मुख्य निष्कर्ष, प्रभाव, र भविष्यका अनुसन्धानका क्षेत्रहरू।</p>
+        <button onclick="createNewTextbox('section8')">नयाँ टिप्पणी थप्नुहोस्</button>
+        <button onclick="deleteLastTextbox('section8')">अन्तिम टिप्पणी हटाउनुहोस्</button>
+    </div>
+
+    <div class="section" id="section9">
+        <h2>९. सन्दर्भ</h2>
+        <p>स्रोतहरूको सूची (APA, MLA, वा शिकागो शैली अनुसार)।</p>
+        <button onclick="createNewTextbox('section9')">नयाँ टिप्पणी थप्नुहोस्</button>
+        <button onclick="deleteLastTextbox('section9')">अन्तिम टिप्पणी हटाउनुहोस्</button>
+    </div>
+
+    <div class="section" id="section10">
+        <h2>१०. परिशिष्ट</h2>
+        <p>थप तथ्यांक, चार्ट, वा सहायक सामग्रीहरू।</p>
+        <button onclick="createNewTextbox('section10')">नयाँ टिप्पणी थप्नुहोस्</button>
+        <button onclick="deleteLastTextbox('section10')">अन्तिम टिप्पणी हटाउनुहोस्</button>
+    </div>
+</body>
+</html>
