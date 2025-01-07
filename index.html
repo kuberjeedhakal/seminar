@@ -63,6 +63,15 @@
             table.appendChild(headerRow);
             section.appendChild(table);
         }
+
+        function downloadAsWord() {
+            const content = document.documentElement.outerHTML;
+            const blob = new Blob([content], { type: "application/msword" });
+            const link = document.createElement("a");
+            link.href = URL.createObjectURL(blob);
+            link.download = "seminar_paper_nepali.doc";
+            link.click();
+        }
     </script>
 </head>
 <body>
@@ -141,5 +150,7 @@
         <button onclick="createNewTextbox('section10')">नयाँ टिप्पणी थप्नुहोस्</button>
         <button onclick="deleteLastTextbox('section10')">अन्तिम टिप्पणी हटाउनुहोस्</button>
     </div>
+
+    <button onclick="downloadAsWord()">Word फाइल डाउनलोड गर्नुहोस्</button>
 </body>
 </html>
